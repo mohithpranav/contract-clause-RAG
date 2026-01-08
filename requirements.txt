@@ -1,0 +1,53 @@
+# ===============================
+# Core RAG & LLM Framework
+# ===============================
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-openai==0.1.22
+
+# ===============================
+# Multi-Agent & Validation
+# ===============================
+pydantic==2.7.4
+pydantic-ai==0.0.13
+
+# ===============================
+# Vector Database
+# ===============================
+faiss-cpu==1.8.0.post1
+
+# ===============================
+# Embeddings & NLP
+# ===============================
+sentence-transformers==2.7.0
+tiktoken==0.7.0
+
+# ===============================
+# Backend API (MERN-friendly)
+# ===============================
+fastapi==0.111.0
+uvicorn==0.30.1
+
+# ===============================
+# File & Document Handling
+# ===============================
+pypdf==4.2.0
+python-docx==1.1.2
+unstructured==0.14.8
+
+# ===============================
+# Utilities
+# ===============================
+python-dotenv==1.0.1
+requests==2.32.3
+numpy==1.26.4
+tqdm==4.66.4
+
+# ===============================
+# Optional (Logging & Debug)
+# ===============================
+loguru==0.7.2
+
+
+RecursiveCharacterTextSplitter
+sentence-transformers==2.7.0
