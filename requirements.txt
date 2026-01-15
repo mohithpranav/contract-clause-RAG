@@ -4,12 +4,13 @@
 langchain==0.2.16
 langchain-community==0.2.16
 langchain-openai==0.1.22
+langchain-text-splitters==0.2.0
 
 # ===============================
 # Multi-Agent & Validation
 # ===============================
-pydantic==2.7.4
-pydantic-ai==0.0.13
+pydantic>=2.7.4
+pydantic-core>=2.18.4
 
 # ===============================
 # Vector Database
@@ -21,12 +22,16 @@ faiss-cpu==1.8.0.post1
 # ===============================
 sentence-transformers==2.7.0
 tiktoken==0.7.0
+transformers==4.36.0
+torch==2.1.0
+accelerate==0.25.0
 
 # ===============================
 # Backend API (MERN-friendly)
 # ===============================
 fastapi==0.111.0
 uvicorn==0.30.1
+python-multipart==0.0.9
 
 # ===============================
 # File & Document Handling
@@ -47,7 +52,3 @@ tqdm==4.66.4
 # Optional (Logging & Debug)
 # ===============================
 loguru==0.7.2
-
-
-RecursiveCharacterTextSplitter
-sentence-transformers==2.7.0

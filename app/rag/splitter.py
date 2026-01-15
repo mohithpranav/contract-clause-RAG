@@ -7,23 +7,28 @@ class LegalTextSplitter:
     """
     Splits legal text into semantically meaningful chunks
     suitable for embedding and retrieval.
+    Uses semantic chunking strategy optimized for RAG.
     """
 
     def __init__(
         self,
-        chunk_size: int = 500,
-        chunk_overlap: int = 100
+        chunk_size: int = 400,  # Reduced for better precision (200-400 tokens optimal)
+        chunk_overlap: int = 50  # 40-60 tokens overlap recommended
     ):
         self.splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
             separators=[
-                "\n\n",      # Clause breaks
-                "\n",        # Line breaks
-                ".",         # Sentence end
-                " ",         # Word boundary
+                "\n## ",      # Section headers (markdown-style)
+                "\n# ",       # Main headers
+                "\n\n",       # Paragraph/clause breaks (most important)
+                "\n",         # Line breaks
+                ". ",         # Sentence end with space
+                " ",          # Word boundary
                 ""
-            ]
+            ],
+            length_function=len,
+            is_separator_regex=False
         )
 
     def split_documents(self, documents: List[Dict]) -> List[Dict]:
