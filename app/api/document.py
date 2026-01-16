@@ -41,16 +41,12 @@ async def process_and_index_document(pdf_path: str, index_dir: str) -> Dict:
     # Step 4: Create/Update FAISS index
     vector_store = LegalVectorStore(index_dir)
     
-    # Check if index exists and load it, or create new
-    try:
-        vector_store.load_index()
-        # Index exists, we would need to append (for now, we'll recreate)
-        # TODO: Implement incremental indexing
-        pass
-    except FileNotFoundError:
-        pass
+    # Clear any existing index - new upload replaces old content completely
+    print("🗑️  Clearing previous document data (if any)...", flush=True)
+    vector_store.clear_index()
     
-    # Create new index (overwrites existing)
+    # Create fresh index with new document only
+    print("📦 Creating new index for uploaded document...", flush=True)
     vector_store.create_index(
         embeddings=embedded_data["embeddings"],
         documents=embedded_data["documents"]

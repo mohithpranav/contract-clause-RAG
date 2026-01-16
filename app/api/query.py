@@ -166,6 +166,31 @@ async def query_clauses(query: str, index_dir: str, top_k: int = 3) -> Dict:
             "relevance": None
         }
     
+    # Check if top result has sufficient relevance (threshold: 0.5 or 50%)
+    top_score = search_results[0]['score']
+    if top_score < 0.5:
+        print(f"⚠️ Low relevance score ({top_score:.2f} < 0.50) - Query appears unrelated to document")
+        return {
+            "clause": {
+                "title": "Information Not Available",
+                "section": "N/A",
+                "content": ""
+            },
+            "explanation": {
+                "summary": "I don't have information about that in this document.",
+                "meaning": "I don't have information about that in this document.",
+                "favoredParty": "N/A",
+                "keyTerms": [],
+                "practicalImpact": "",
+                "confidence": 30,
+                "confidenceReason": "Query does not match document content"
+            },
+            "relevance": {
+                "score": int(top_score * 100),
+                "matchedTerms": []
+            }
+        }
+    
     # Step 4: Question-aware reranking (FIX 2)
     reranked_results = rerank_by_answerability(search_results[:top_k], query)
     
