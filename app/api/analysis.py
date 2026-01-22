@@ -7,16 +7,6 @@ from app.rag.generator import LegalResponseGenerator
 
 
 async def analyze_clause(clause_text: str, metadata: Dict) -> Dict:
-    """
-    Generate detailed analysis of a clause independent of any query
-    
-    Args:
-        clause_text: The clause text to analyze
-        metadata: Metadata about the clause (source, page, etc.)
-        
-    Returns:
-        Comprehensive analysis with all details
-    """
     # Generate comprehensive analysis
     generator = LegalResponseGenerator()
     

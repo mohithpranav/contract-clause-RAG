@@ -5,11 +5,6 @@ from pypdf import PdfReader
 
 
 class LegalDocumentLoader:
-    """
-    Loads legal PDF documents and extracts raw text.
-    Each page is treated as a separate document unit.
-    """
-
     def __init__(self, contracts_dir: str):
         self.contracts_dir = Path(contracts_dir)
 
@@ -19,14 +14,7 @@ class LegalDocumentLoader:
             )
 
     def load_pdfs(self) -> List[Dict]:
-        """
-        Reads all PDF files from the contracts directory.
-
-        Returns:
-            List of dicts containing:
-            - text: page text
-            - metadata: file name & page number
-        """
+        
         documents = []
 
         pdf_files = list(self.contracts_dir.glob("*.pdf"))

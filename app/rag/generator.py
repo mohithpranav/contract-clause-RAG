@@ -8,9 +8,7 @@ MASTER_SYSTEM_PROMPT = "Answer using ONLY the context provided. Be precise and f
 
 
 class LegalResponseGenerator:
-    """
-    Generates grounded legal explanations using Hugging Face LLM.
-    """
+  
 
     def __init__(self, model_name: str = "google/flan-t5-large"):
         """

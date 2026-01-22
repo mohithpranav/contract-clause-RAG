@@ -4,11 +4,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 class LegalTextSplitter:
-    """
-    Splits legal text into semantically meaningful chunks
-    suitable for embedding and retrieval.
-    Uses semantic chunking strategy optimized for RAG.
-    """
 
     def __init__(
         self,
@@ -32,15 +27,6 @@ class LegalTextSplitter:
         )
 
     def split_documents(self, documents: List[Dict]) -> List[Dict]:
-        """
-        Splits loaded legal documents into chunks.
-
-        Input:
-            documents -> output from LegalDocumentLoader
-
-        Output:
-            List of chunked documents with metadata                 
-        """
         chunked_docs = []
 
         for doc in documents:

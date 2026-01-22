@@ -6,10 +6,6 @@ import numpy as np
 
 
 class LegalVectorStore:
-    """
-    Handles FAISS index creation, storage, and loading
-    for legal clause embeddings.
-    """
 
     def __init__(self, index_dir: str):
         self.index_dir = Path(index_dir)
@@ -22,10 +18,7 @@ class LegalVectorStore:
         self.metadata = None
 
     def create_index(self, embeddings: np.ndarray, documents: List[Dict]):
-        """
-        Creates and saves a FAISS index from embeddings.
-        Replaces any existing index.
-        """
+       
         dimension = embeddings.shape[1]
 
         # Cosine similarity via inner product (vectors already normalized)
@@ -40,10 +33,7 @@ class LegalVectorStore:
         np.save(self.meta_file, self.metadata, allow_pickle=True)
     
     def clear_index(self):
-        """
-        Deletes existing index and metadata files.
-        Called before creating new index to ensure clean slate.
-        """
+     
         if self.index_file.exists():
             self.index_file.unlink()
             print(f"   ✓ Deleted old index file: {self.index_file.name}", flush=True)
